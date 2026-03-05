@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "tataycs notches",
   "description": "A lightweight browser notepad with tabs that auto-saves notes.",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"

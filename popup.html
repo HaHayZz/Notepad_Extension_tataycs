@@ -8,25 +8,47 @@
 </head>
 <body>
   <div class="container">
-    <!-- Header with icon and title -->
+    <!-- Header with icon, title, and controls -->
     <div class="header">
-      <span class="header-icon">&#128221;</span>
-      <h1>tataycs notches</h1>
+      <div class="header-left">
+        <span class="header-icon">&#128221;</span>
+        <h1>tataycs notches</h1>
+      </div>
+      <div class="header-controls">
+        <button id="dark-mode-btn" class="icon-btn" title="Toggle dark mode">&#127769;</button>
+      </div>
+    </div>
+
+    <!-- Search bar (hidden by default, toggle with Ctrl+F) -->
+    <div id="search-bar" class="search-bar hidden">
+      <input id="search-input" type="text" placeholder="Find in note..." />
+      <span id="search-count" class="search-count"></span>
+      <button id="search-prev" class="search-nav" title="Previous">&#9650;</button>
+      <button id="search-next" class="search-nav" title="Next">&#9660;</button>
+      <button id="search-close" class="search-close" title="Close">&times;</button>
     </div>
 
     <!-- Tab bar: shows tabs + add button -->
     <div class="tab-bar">
       <div id="tabs-container" class="tabs-container"></div>
-      <button id="add-tab-btn" class="add-tab-btn" title="Add new tab">+</button>
+      <button id="add-tab-btn" class="add-tab-btn" title="Add new tab (Ctrl+N)">+</button>
     </div>
 
     <!-- Textarea for writing notes -->
     <textarea id="notepad" placeholder="Start typing your notes..."></textarea>
 
-    <!-- Footer: character count + clear button -->
+    <!-- Status bar: last saved + counts -->
+    <div class="status-bar">
+      <span id="last-saved" class="last-saved"></span>
+      <span id="word-count" class="stat">0 words</span>
+      <span class="stat-sep">|</span>
+      <span id="char-count" class="stat">0 chars</span>
+    </div>
+
+    <!-- Footer: export + clear -->
     <div class="footer">
-      <span id="char-count" class="char-count">0 characters</span>
-      <button id="clear-btn">Clear Notes</button>
+      <button id="export-btn" class="action-btn export-btn" title="Download note as .txt">&#128190; Export</button>
+      <button id="clear-btn" class="action-btn clear-btn">&#128465; Clear Notes</button>
     </div>
   </div>
 
