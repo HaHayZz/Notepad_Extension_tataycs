@@ -6,8 +6,8 @@
 }
 
 body {
-  width: 370px;
-  min-height: 420px;
+  width: 400px;
+  min-height: 460px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0f2f5;
 }
@@ -25,7 +25,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 16px 20px;
+  padding: 14px 20px;
   background: linear-gradient(135deg, #4a90d9, #357abd);
   color: #fff;
 }
@@ -40,11 +40,125 @@ h1 {
   letter-spacing: 0.5px;
 }
 
-/* Textarea styling */
+/* ===== Tab Bar ===== */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  background-color: #e4e8ed;
+  border-bottom: 1px solid #d0d5dc;
+  padding: 0 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs-container {
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual tab */
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #5a6778;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.tab:hover {
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tab.active {
+  color: #357abd;
+  background-color: #fff;
+  border-bottom-color: #4a90d9;
+  font-weight: 600;
+}
+
+/* Tab name (editable on double-click) */
+.tab-name {
+  pointer-events: none;
+}
+
+.tab-name.editing {
+  pointer-events: auto;
+  outline: none;
+  border-bottom: 1px dashed #4a90d9;
+  padding: 0 2px;
+  min-width: 30px;
+}
+
+/* Close button on tab */
+.tab-close {
+  font-size: 14px;
+  line-height: 1;
+  color: #aaa;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.tab-close:hover {
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.12);
+}
+
+/* Add tab button */
+.add-tab-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  margin: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #5a6778;
+  background: none;
+  border: 1px dashed #bcc3cd;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.add-tab-btn:hover {
+  color: #357abd;
+  border-color: #4a90d9;
+  background-color: rgba(74, 144, 217, 0.08);
+}
+
+/* ===== Textarea ===== */
 #notepad {
-  width: calc(100% - 32px);
-  height: 290px;
-  margin: 16px auto 0;
+  width: calc(100% - 24px);
+  height: 260px;
+  margin: 12px auto 0;
   padding: 14px;
   border: 1px solid #dde1e6;
   border-radius: 10px;
@@ -68,15 +182,14 @@ h1 {
   color: #b0b7c3;
 }
 
-/* Footer area */
+/* ===== Footer ===== */
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px 16px;
+  padding: 10px 12px 14px;
 }
 
-/* Character count */
 .char-count {
   font-size: 12px;
   color: #8896a6;
