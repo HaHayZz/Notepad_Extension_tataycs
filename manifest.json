@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "QuickNote",
+  "description": "A lightweight browser notepad that auto-saves notes.",
+  "version": "1.0.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
