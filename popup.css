@@ -119,6 +119,7 @@ h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.4px; }
   white-space: nowrap;
   transition: all 0.15s;
   position: relative;
+  -webkit-user-select: none;
   user-select: none;
 }
 .tab:hover { color: #333; background: rgba(255,255,255,0.5); }
@@ -249,8 +250,8 @@ h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.4px; }
   font-size: 10px; color: #a0aab4; font-style: italic;
 }
 .stat-spacer { flex: 1; }
-.stat { font-size: 10px; color: #8896a6; user-select: none; }
-.stat-sep { font-size: 10px; color: #ccc; user-select: none; }
+.stat { font-size: 10px; color: #8896a6; -webkit-user-select: none; user-select: none; }
+.stat-sep { font-size: 10px; color: #ccc; -webkit-user-select: none; user-select: none; }
 
 /* ===== Footer ===== */
 .footer {
@@ -416,3 +417,6 @@ body.dark .toast.error { background: #f38ba8; color: #1e1e2e; }
 
 body.dark ::-webkit-scrollbar-thumb { background: #45475a; }
 body.dark ::-webkit-scrollbar-thumb:hover { background: #585b70; }
+
+/* Hidden file input */
+.file-input-hidden { display: none; }
