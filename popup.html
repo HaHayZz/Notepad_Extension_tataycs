@@ -8,49 +8,114 @@
 </head>
 <body>
   <div class="container">
-    <!-- Header with icon, title, and controls -->
+    <!-- Toast notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Header -->
     <div class="header">
       <div class="header-left">
         <span class="header-icon">&#128221;</span>
         <h1>tataycs notches</h1>
       </div>
       <div class="header-controls">
+        <button id="import-btn" class="icon-btn" title="Import .txt file">&#128194;</button>
+        <button id="template-btn" class="icon-btn" title="New from template">&#128203;</button>
         <button id="dark-mode-btn" class="icon-btn" title="Toggle dark mode">&#127769;</button>
       </div>
     </div>
 
-    <!-- Search bar (hidden by default, toggle with Ctrl+F) -->
+    <!-- Search bar (hidden by default) -->
     <div id="search-bar" class="search-bar hidden">
       <input id="search-input" type="text" placeholder="Find in note..." />
       <span id="search-count" class="search-count"></span>
-      <button id="search-prev" class="search-nav" title="Previous">&#9650;</button>
-      <button id="search-next" class="search-nav" title="Next">&#9660;</button>
-      <button id="search-close" class="search-close" title="Close">&times;</button>
+      <button id="search-prev" class="search-nav" title="Previous (Shift+Enter)">&#9650;</button>
+      <button id="search-next" class="search-nav" title="Next (Enter)">&#9660;</button>
+      <button id="search-close" class="search-close" title="Close (Esc)">&times;</button>
     </div>
 
-    <!-- Tab bar: shows tabs + add button -->
+    <!-- Tab bar -->
     <div class="tab-bar">
       <div id="tabs-container" class="tabs-container"></div>
       <button id="add-tab-btn" class="add-tab-btn" title="Add new tab (Ctrl+N)">+</button>
     </div>
 
-    <!-- Textarea for writing notes -->
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <button id="md-preview-btn" class="tool-btn" title="Toggle Markdown preview">&#128196; Preview</button>
+      <button id="mono-btn" class="tool-btn" title="Toggle monospace font">Aa Mono</button>
+      <span class="toolbar-spacer"></span>
+      <span id="limit-warning" class="limit-warning hidden"></span>
+    </div>
+
+    <!-- Textarea -->
     <textarea id="notepad" placeholder="Start typing your notes..."></textarea>
 
-    <!-- Status bar: last saved + counts -->
+    <!-- Markdown preview (hidden by default) -->
+    <div id="md-preview" class="md-preview hidden"></div>
+
+    <!-- Status bar -->
     <div class="status-bar">
+      <span id="created-at" class="created-at"></span>
       <span id="last-saved" class="last-saved"></span>
+      <span class="stat-spacer"></span>
       <span id="word-count" class="stat">0 words</span>
       <span class="stat-sep">|</span>
       <span id="char-count" class="stat">0 chars</span>
     </div>
 
-    <!-- Footer: export + clear -->
+    <!-- Footer -->
     <div class="footer">
-      <button id="export-btn" class="action-btn export-btn" title="Download note as .txt">&#128190; Export</button>
-      <button id="clear-btn" class="action-btn clear-btn">&#128465; Clear Notes</button>
+      <button id="export-btn" class="action-btn export-btn" title="Export current note (Ctrl+S)">&#128190; Export</button>
+      <button id="export-all-btn" class="action-btn export-all-btn" title="Export all notes">&#128230; All</button>
+      <button id="clear-btn" class="action-btn clear-btn" title="Clear current note">&#128465; Clear</button>
     </div>
   </div>
+
+  <!-- Tab context menu (right-click) -->
+  <div id="tab-context-menu" class="context-menu hidden">
+    <button class="ctx-item" data-action="pin"><span class="ctx-icon">&#128204;</span> Pin Tab</button>
+    <button class="ctx-item" data-action="duplicate"><span class="ctx-icon">&#128203;</span> Duplicate</button>
+    <div class="ctx-item ctx-colors-row">
+      <span class="ctx-icon">&#127912;</span>
+      <span class="color-dot" data-color="" title="Default"></span>
+      <span class="color-dot" data-color="#e74c3c" title="Red"></span>
+      <span class="color-dot" data-color="#f39c12" title="Orange"></span>
+      <span class="color-dot" data-color="#27ae60" title="Green"></span>
+      <span class="color-dot" data-color="#3498db" title="Blue"></span>
+      <span class="color-dot" data-color="#9b59b6" title="Purple"></span>
+    </div>
+    <hr class="ctx-divider">
+    <button class="ctx-item ctx-danger" data-action="delete"><span class="ctx-icon">&#128465;</span> Delete</button>
+  </div>
+
+  <!-- Delete confirmation modal -->
+  <div id="delete-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <p class="modal-text">This tab contains notes. Delete it?</p>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="modal-btn">Cancel</button>
+        <button id="modal-confirm" class="modal-btn modal-btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template picker modal -->
+  <div id="template-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <h3 class="modal-title">Choose a Template</h3>
+      <div class="template-list">
+        <button class="template-option" data-template="blank">&#128196; Blank Note</button>
+        <button class="template-option" data-template="todo">&#9989; Todo List</button>
+        <button class="template-option" data-template="meeting">&#128203; Meeting Notes</button>
+        <button class="template-option" data-template="idea">&#128161; Quick Idea</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden file input for import -->
+  <input type="file" id="file-input" accept=".txt" style="display:none" />
 
   <script src="popup.js"></script>
 </body>

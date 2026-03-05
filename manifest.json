@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "tataycs notches",
-  "description": "A lightweight browser notepad with tabs that auto-saves notes.",
-  "version": "3.0.0",
+  "description": "A feature-rich browser notepad with tabs, templates, auto-save, dark mode, and more.",
+  "version": "4.0.0",
+  "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"
@@ -11,5 +12,8 @@
     "16": "icon.png",
     "48": "icon.png",
     "128": "icon.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
 }
