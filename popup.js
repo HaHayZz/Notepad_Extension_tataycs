@@ -4,6 +4,13 @@ const STORAGE_KEY = "quicknote_data";
 // DOM references
 const notepad = document.getElementById("notepad");
 const clearBtn = document.getElementById("clear-btn");
+const charCount = document.getElementById("char-count");
+
+// Update character count display
+function updateCharCount() {
+  const len = notepad.value.length;
+  charCount.textContent = len + (len === 1 ? " character" : " characters");
+}
 
 // Load saved note from localStorage when popup opens
 function loadNote() {
@@ -11,17 +18,20 @@ function loadNote() {
   if (saved !== null) {
     notepad.value = saved;
   }
+  updateCharCount();
 }
 
 // Save note to localStorage
 function saveNote() {
   localStorage.setItem(STORAGE_KEY, notepad.value);
+  updateCharCount();
 }
 
 // Clear stored note and empty the textarea
 function clearNote() {
   localStorage.removeItem(STORAGE_KEY);
   notepad.value = "";
+  updateCharCount();
   notepad.focus();
 }
 

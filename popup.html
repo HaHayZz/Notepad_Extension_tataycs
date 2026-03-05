@@ -8,14 +8,20 @@
 </head>
 <body>
   <div class="container">
-    <!-- Extension title -->
-    <h1>QuickNote</h1>
+    <!-- Header with icon and title -->
+    <div class="header">
+      <span class="header-icon">&#128221;</span>
+      <h1>QuickNote</h1>
+    </div>
 
     <!-- Textarea for writing notes -->
     <textarea id="notepad" placeholder="Start typing your notes..."></textarea>
 
-    <!-- Clear Notes button -->
-    <button id="clear-btn">Clear Notes</button>
+    <!-- Footer: character count + clear button -->
+    <div class="footer">
+      <span id="char-count" class="char-count">0 characters</span>
+      <button id="clear-btn">Clear Notes</button>
+    </div>
   </div>
 
   <script src="popup.js"></script>
